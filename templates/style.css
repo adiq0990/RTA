@@ -1,0 +1,39 @@
+body {
+  background-color: rgb(20, 13, 49);
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.title {
+  align-self: center;
+  margin-bottom: 50px;
+  color: white;
+}
+
+.charts {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.chart {
+  width: 45%;
+  padding: 20px;
+  background-color: rgba(60, 11, 51, 0.517);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart p {
+  color: white;
+}
