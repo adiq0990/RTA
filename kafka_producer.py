@@ -38,11 +38,15 @@ def generate_person_data():
         "heart_rate": random.randint(60, 100),  # Tętno
         "oxygen_saturation": random.randint(90, 100)  # Nasycenie tlenu
     }
+    # ZMIENNA DEATH MOZE PRZYJAC 1 TYLKO WTEDY KIEDY OSOBA ZACHOROWALA NA COVIDA (covid_positive = 1)
+    person_data["death"] = 1 if random.choice([0, 1]) == 1 and person_data["covid_positive"] == 1 else 0
+    # ZMIENNA RECOVERED MOZE PRZYJAC 1 TYLKO WTEDY KIEDY OSOBA ZACHOROWALA NA COVIDA (covid_positive = 1) I NIE ZMARLA (death = 0)
+    person_data["recovered"] = random.choice([0, 1]) if person_data["covid_positive"] == 1 and person_data["death"] == 0 else 0
     
     return person_data
 
 if __name__ == "__main__":
-    SERVER = "localhost:9092"  # Adres i port brokera Kafka
+    SERVER = "localhost:9092"
     
     producer = KafkaProducer(bootstrap_servers=[SERVER],
                              value_serializer=lambda x: json.dumps(x).encode('utf-8'))

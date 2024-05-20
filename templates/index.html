@@ -9,6 +9,34 @@
 <body>
     <div class="container">
         <h1 class="title">Real-time COVID-19 Analysis</h1>
+
+        <div class="charts">
+            <div class="chart pie_chart">
+                <p>Liczba zachorowań, śmierci, wyzdrowiałych</p>
+                <canvas id="pie_cases"></canvas>
+            </div>
+            <div class="main-row">
+                <div class="col">
+                    <div class="row">
+                        <p>Łączna liczba badanych</p>
+                        <p id="total_cases"></p>
+                    </div>
+                    <div class="row">
+                        <p>Liczba aktywnych przypadków</p>
+                        <p id="active_cases"></p>
+                    </div>
+                    <div class="row">
+                        <p>Liczba śmierci</p>
+                        <p id="total_deaths"></p>
+                    </div>
+                    <div class="row">
+                        <p>Liczba wyzdrowiałych</p>
+                        <p id="total_recovered"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="charts">
             <div class="chart">
                 <p>Zachorowania w województwach</p>

@@ -28,9 +28,31 @@ def kafka_consumer():
 def index():
     return render_template('index.html')
 
-@app.route('/chart')
+@app.route('/data_summary')
+def data():
+    df = pd.DataFrame(data_from_kafka)
+    df_cases = len(df['covid_positive'])
+    df_infected = len(df.loc[df['covid_positive'] == 1])
+    df_recovered = len(df.loc[df['recovered'] == 1])
+    df_death = len(df.loc[df['death'] == 1])
+    df_active = df_infected - df_recovered - df_death
+
+    return jsonify({"active": df_active, "deaths": df_death, "recovered": df_recovered, "cases": df_cases})
+
+@app.route('/number_cases')
 def chart():
-    return jsonify(data_from_kafka)
+    df = pd.DataFrame(data_from_kafka)
+    df_infected = df.loc[df['covid_positive'] == 1]
+    num_infected = len(df_infected)
+
+    num_recovered = len(df_infected.loc[df_infected['recovered'] == 1])
+    num_death = len(df_infected.loc[df_infected['death'] == 1])
+    num_active = num_infected - num_recovered - num_death
+
+    labels = ['Active', 'Death', 'Recovered']
+    sizes = [num_active, num_death, num_recovered]
+
+    return jsonify({"labels": labels, "sizes": sizes})
 
 @app.route('/age_histogram')
 def table():
