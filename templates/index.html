@@ -11,7 +11,7 @@
         <h1 class="title">Real-time COVID-19 Analysis</h1>
 
         <div class="charts">
-            <div class="chart pie_chart">
+            <div class="pie-chart">
                 <p>Liczba zachorowań, śmierci, wyzdrowiałych</p>
                 <canvas id="pie_cases"></canvas>
             </div>
@@ -33,18 +33,81 @@
                         <p>Liczba wyzdrowiałych</p>
                         <p id="total_recovered"></p>
                     </div>
+                    <div class="row">
+                        <p>Srednia wieku zarazonych</p>
+                        <p id="mean-age-infected"></p>
+                    </div>
+                    <div class="row">
+                        <p>Srednie ciśnienie krwi zarazonych</p>
+                        <p id="mean_blood_pressure_infected"></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <p>Srednie tetno zarazonych</p>
+                        <p id="mean_heart_rate_infected"></p>
+                    </div>
+                    <div class="row">
+                        <p>Srednia saturacja tlenem</p>
+                        <p id="mean_oxygen_saturation_infected"></p>
+                    </div>
+                    <div class="row">
+                        <p>Procent zmarlych</p>
+                        <p id="death_rate"></p>
+                    </div>
+                    <div class="row">
+                        <p>Procent wyzdrowialych</p>
+                        <p id="recovery-rate"></p>
+                    </div>
+                    <div class="row">
+                        <p>Srednia temperatura ciala zarazonych</p>
+                        <p id="mean-temperature-infected"></p>
+                    </div>
+                    <div class="row">
+                        <p>Odchylenie standardowe temperatury zarazonych</p>
+                        <p id="std-temperature-infected"></p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="charts">
-            <div class="chart">
-                <p>Zachorowania w województwach</p>
-                <canvas id="province-chart"></canvas>
+        <div>
+            <div class="chart chart-time">
+                <h2>Liczba aktywnych przypadków w czasie</h2>
+                <canvas id="time-chart-active"></canvas>
             </div>
-            <div class="chart">
-                <p>Zachorowania w grupach wiekowych</p>
-                <canvas id="age-histogram"></canvas>
+        </div>
+
+        <div class="container">
+            <div class="charts">
+                <div class="col">
+                    <div class="chart">
+                        <p>Aktywne przypadki COVID-19</p>
+                        <canvas id="province-chart-active"></canvas>
+                    </div>
+                    <div class="chart">
+                        <p>Przypadki śmierci COVID-19</p>
+                        <canvas id="province-chart-deaths"></canvas>
+                    </div>
+                    <div class="chart">
+                        <p>Przypadki wyzdrowień COVID-19</p>
+                        <canvas id="province-chart-recovered"></canvas>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="chart">
+                        <p>Aktywny przypadki w grupach wiekowych</p>
+                        <canvas id="age-chart-active"></canvas>
+                    </div>
+                    <div class="chart">
+                        <p>Śmierci w grupach wiekowych</p>
+                        <canvas id="age-chart-deaths"></canvas>
+                    </div>
+                    <div class="chart">
+                        <p>Wyzdrowienia w grupach wiekowych</p>
+                        <canvas id="age-chart-recovered"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

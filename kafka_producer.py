@@ -12,8 +12,13 @@ wojewodztwa = [
     "wielkopolskie", "zachodniopomorskie"
 ]
 
+record_count = 0
+start_date = datetime.now()
+
 def generate_person_data():
-    t = datetime.now() + timedelta(seconds=random.randint(-15, 0))
+    days_ago = 14 - (record_count // 200)
+    base_time = start_date - timedelta(days=days_ago)
+    t = base_time.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(seconds=random.randint(0, 86399))
     
     person_data = {
         "time": str(t),
@@ -53,6 +58,11 @@ if __name__ == "__main__":
     
     while True:
         person_data = generate_person_data()
-        producer.send('covid_data_topic', value=person_data)
-        print("Sent data:", person_data)
-        time.sleep(1.5)
+        if random.random() < 0.8:
+            producer.send('covid_data_topic', value=person_data)
+            print("Sent data:", person_data)
+        else:
+            print("Data not sent")
+            
+        record_count += 1
+        time.sleep(1)
