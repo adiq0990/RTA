@@ -82,7 +82,7 @@ function drawTimeChart(activeLabels, activeData, recoveredLabels, recoveredData,
     time_chart[chartKey] = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: activeLabels, // Użyj etykiet aktywnych przypadków jako etykiet dla wykresu
+            labels: activeLabels,
             datasets: [{
                 label: 'Active Cases',
                 data: activeData,
@@ -105,10 +105,29 @@ function drawTimeChart(activeLabels, activeData, recoveredLabels, recoveredData,
                 y: {
                     stacked: true
                 }
+            },
+            plugins: {
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        label: function(context) {
+                            var label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y;
+                            }
+                            return label;
+                        }
+                    }
+                }
             }
         }
     });
 }
+
 
 
 
