@@ -22,7 +22,7 @@ def kafka_consumer():
         data = message.value
         data_from_kafka.append(data)
         df = pd.DataFrame(data_from_kafka)
-        # print(df)
+        print(df)
 
 @app.route('/')
 def index():

@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 import time
 from kafka import KafkaProducer
 
-# Lista województw w Polsce
 wojewodztwa = [
     "dolnośląskie", "kujawsko-pomorskie", "lubelskie", "lubuskie", "łódzkie", 
     "małopolskie", "mazowieckie", "opolskie", "podkarpackie", "podlaskie", 
@@ -38,10 +37,10 @@ def generate_person_data():
         "chills": random.choice([True, False]),
         "diarrhea": random.choice([True, False]),
         "vaccinated": random.choice([True, False]),
-        "temperature": round(random.uniform(35.5, 40.0), 1),  # Temperatura ciała
-        "blood_pressure": random.randint(90, 150),  # Ciśnienie krwi (górne)
-        "heart_rate": random.randint(60, 100),  # Tętno
-        "oxygen_saturation": random.randint(90, 100)  # Nasycenie tlenu
+        "temperature": round(random.uniform(35.5, 40.0), 1),
+        "blood_pressure": random.randint(90, 150),
+        "heart_rate": random.randint(60, 100),
+        "oxygen_saturation": random.randint(90, 100)
     }
     # ZMIENNA DEATH MOZE PRZYJAC 1 TYLKO WTEDY KIEDY OSOBA ZACHOROWALA NA COVIDA (covid_positive = 1)
     person_data["death"] = 1 if random.choice([0, 1]) == 1 and person_data["covid_positive"] == 1 else 0
@@ -65,4 +64,4 @@ if __name__ == "__main__":
             print("Data not sent")
             
         record_count += 1
-        time.sleep(1)
+        time.sleep(0.5)
